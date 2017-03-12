@@ -3,20 +3,160 @@
 <head>
 	<title>KanyePon</title>
 	<script type="text/javascript" src="assets/js/lib/paper-full.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.3/howler.core.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/kanyePon.css">
 	<script type="text/paperscript" canvas="myCanvas">
+
+	var keyData = {
+		q: {
+			sound: new Howl({
+		      src: ['assets/sounds/heartless/1.mp3']
+		    })
+		},
+		w: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/2.mp3']
+			})
+		},
+		e: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/3.mp3']
+			})
+		},
+		r: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/4.mp3']
+			})
+		},
+		t: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/5.mp3']
+			})
+		},
+		y: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/6.mp3']
+			})
+		},
+		u: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/7.mp3']
+			})
+		},
+		i: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/8.mp3']
+			})
+		},
+		o: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/9.mp3']
+			})
+		},
+		p: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/10.mp3']
+			})
+		},
+		a: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/11.mp3']
+			})
+		},
+		s: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/12.mp3']
+			})
+		},
+		d: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/13.mp3']
+			})
+		},
+		f: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/14.mp3']
+			})
+		},
+		g: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/15.mp3']
+			})
+		},
+		h: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/16.mp3']
+			})
+		},
+		j: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/17.mp3']
+			})
+		},
+		k: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/18.mp3']
+			})
+		},
+		l: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/19.mp3']
+			})
+		},
+		z: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/20.mp3']
+			})
+		},
+		x: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/21.mp3']
+			})
+		},
+		c: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/22.mp3']
+			})
+		},
+		v: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/23.mp3']
+			})
+		},
+		b: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/24.mp3']
+			})
+		},
+		n: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/25.mp3']
+			})
+		},
+		m: {
+			sound: new Howl({
+			  src: ['assets/sounds/heartless/26.mp3']
+			})
+		}
+	}
+
 	var kanyes = [];
 
-	function onKeyDown(event) {
-		var maxPoint = new Point(view.size.width, view.size.height);
-		var randomCoord = Point.random();
-		var point = maxPoint * randomCoord;
-		<!-- new Path.Circle(point, 10).fillColor = "orange"; -->
+	var center = new Raster('kanyecenter');
+	center.position = view.center;
 
-		var raster = new Raster('kanye');
-		raster.position = point;
-		raster.scale(0.45);
-		kanyes.push(raster);
+	function onKeyDown(event) {
+		if(keyData[event.key]) {
+			keyData[event.key].sound.play()
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomCoord = Point.random();
+			var point = maxPoint * randomCoord;
+
+			var raster = new Raster('kanye');
+			raster.position = point;
+			raster.scale(0.45);
+			kanyes.push(raster);
+		}
 	}
 
 	function onFrame(event) {
@@ -32,5 +172,6 @@
 <body>
 	<canvas id="myCanvas" resize></canvas>
 	<img src="assets/images/kanye_head.png" id="kanye">
+	<img src="assets/images/kanyecenter.png" id="kanyecenter">
 </body>
 </html>
