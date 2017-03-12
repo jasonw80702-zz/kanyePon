@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>KanyePon</title>
+	<script type="text/javascript" src="assets/js/lib/paper-full.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/kanyePon.css">
+	<script type="text/paperscript" canvas="myCanvas">
+	var kanyes = [];
+
+	function onKeyDown(event) {
+		var maxPoint = new Point(view.size.width, view.size.height);
+		var randomCoord = Point.random();
+		var point = maxPoint * randomCoord;
+		<!-- new Path.Circle(point, 10).fillColor = "orange"; -->
+
+		var raster = new Raster('kanye');
+		raster.position = point;
+		raster.scale(0.45);
+		kanyes.push(raster);
+	}
+
+	function onFrame(event) {
+		for(var i = 0; i < kanyes.length; i++) {
+			kanyes[i].scale(0.95);
+		}
+	}
+
+	
+		
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+	<img src="assets/images/kanye_head.png" id="kanye">
+</body>
+</html>
