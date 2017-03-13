@@ -1,5 +1,5 @@
 # kanyePon
-Patapon clone with Kanye
+Patatap clone with Kanye
 
 http://patatap.com/
 
